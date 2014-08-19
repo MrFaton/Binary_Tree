@@ -4,7 +4,7 @@
 public class BinaryTree {
     public static TreeNode root=new TreeNode(5, null, null);
     public static void main(String[] args) {
-        makeTree(2,6,8,10,15,17);
+        makeTree(6,7,4,2,3);
         showTree(root);
     }
 
@@ -16,7 +16,7 @@ public class BinaryTree {
     }
 
     public static TreeNode inseart(int value, TreeNode nodeList){
-        if (nodeList.value>value){
+        if (value<nodeList.value){
             if (nodeList.left==null){
                 nodeList.left=new TreeNode(value, null, null);
             } else {
@@ -32,7 +32,14 @@ public class BinaryTree {
         return nodeList;
     }
 
-    public static TreeNode showTree(TreeNode tree){
-        if ()
+    public static String showTree(TreeNode tree){
+        if(tree!=null){
+            String left=(tree.left==null ? "нет" : ""+tree.left.value);
+            String right=(tree.right==null ? "нет" : ""+tree.right.value);
+            System.out.println("Корень: "+tree.value+", левая ветка: "+left+", правая ветка: "+right);
+            showTree(tree.left);
+            showTree(tree.right);
+        }
+        return "1";
     }
 }
