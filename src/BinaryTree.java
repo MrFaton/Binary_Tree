@@ -3,8 +3,17 @@
  */
 public class BinaryTree {
     public static TreeNode root=new TreeNode(5, null, null);
+    static int i=0;
     public static void main(String[] args) {
-        makeTree(6,7,4,2,3);
+        makeTree(6,7,4,2,3,1);
+        i=0;
+        System.out.println("Колличество всех элементов в дереве = "+size(root));
+        i=0;
+        System.out.println("Сумма всех элементов дерева = "+sum(root));
+        i=0;
+        System.out.println("Максимальное значение среди всех элементов в дереве = "+max(root));
+        i=0;
+        System.out.println("Максимальная высота дерева = "+height(root));
         showTree(root);
     }
 
@@ -30,6 +39,39 @@ public class BinaryTree {
             }
         }
         return nodeList;
+    }
+
+    public static Integer size(TreeNode list){
+        if(list!=null){
+            i++;
+            size(list.left);
+            size(list.right);
+        }
+        return  i;
+    }
+
+    public static Integer sum(TreeNode list){
+        if (list!=null){
+            i+=list.value;
+            sum(list.left);
+            sum(list.right);
+        }
+        return i;
+    }
+
+    public static Integer max(TreeNode list){
+        if(list!=null){
+            if (i<list.value){
+                i=list.value;
+            }
+            max(list.left);
+            max(list.right);
+        }
+        return i;
+    }
+
+    public static Integer height(TreeNode list){
+        
     }
 
     public static String showTree(TreeNode tree){
